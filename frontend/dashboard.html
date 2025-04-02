@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart File Sharing System - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.6.1/d3.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>System Dashboard</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <h2>Analytics & Visualization</h2>
+                <div class="date-filter">
+                    <label for="timeRange">Time Range:</label>
+                    <select id="timeRange">
+                        <option value="day">Last 24 hours</option>
+                        <option value="week" selected>Last 7 days</option>
+                        <option value="month">Last 30 days</option>
+                        <option value="year">Last year</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <section class="card dashboard-card">
+                    <h3>Encryption Algorithm Distribution</h3>
+                    <div class="chart-container">
+                        <canvas id="encryptionDistribution"></canvas>
+                    </div>
+                    <div class="chart-legend" id="encryptionLegend"></div>
+                </section>
+
+                <section class="card dashboard-card">
+                    <h3>File Access Patterns</h3>
+                    <div class="chart-container">
+                        <canvas id="accessPatternsChart"></canvas>
+                    </div>
+                </section>
+
+                <section class="card dashboard-card">
+                    <h3>AI Encryption Decisions</h3>
+                    <div class="chart-container">
+                        <div id="aiDecisionTree"></div>
+                    </div>
+                </section>
+
+                <section class="card dashboard-card">
+                    <h3>User Trust Scores</h3>
+                    <div class="chart-container">
+                        <canvas id="userScoresChart"></canvas>
+                    </div>
+                </section>
+            </div>
+
+            <section class="card full-width">
+                <h3>System Performance</h3>
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <h4>Average Encryption Time</h4>
+                        <div class="metric-value" id="avgEncryptionTime">--</div>
+                    </div>
+                    <div class="metric-box">
+                        <h4>Files Processed</h4>
+                        <div class="metric-value" id="filesProcessed">--</div>
+                    </div>
+                    <div class="metric-box">
+                        <h4>Storage Used</h4>
+                        <div class="metric-value" id="storageUsed">--</div>
+                    </div>
+                    <div class="metric-box">
+                        <h4>Quantum Security Score</h4>
+                        <div class="metric-value" id="quantumScore">--</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card full-width">
+                <h3>Merkle Tree Visualization</h3>
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="currentTree">Current File Tree</button>
+                    <button class="tab-button" data-tab="historyTree">Historical Changes</button>
+                </div>
+                <div class="tab-content">
+                    <div id="currentTree" class="tab-pane active">
+                        <div class="merkle-tree-container" id="merkleTreeViz"></div>
+                    </div>
+                    <div id="historyTree" class="tab-pane">
+                        <div class="merkle-tree-container" id="historyTreeViz"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card full-width">
+                <h3>Access Log Explorer</h3>
+                <div class="filter-controls">
+                    <input type="text" id="logSearch" placeholder="Search logs...">
+                    <select id="logType">
+                        <option value="all">All Events</option>
+                        <option value="upload">Uploads</option>
+                        <option value="download">Downloads</option>
+                        <option value="permission">Permission Changes</option>
+                        <option value="verification">Integrity Checks</option>
+                    </select>
+                </div>
+                <div class="log-container">
+                    <table id="accessLogTable">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>User</th>
+                                <th>File</th>
+                                <th>Action</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody id="accessLogs">
+                            <!-- Access logs will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="logPagination" class="pagination">
+                    <!-- Pagination controls will be added here -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Quantum-Secure File Sharing System &copy; 2025</p>
+            <p>Current API Status: <span id="apiStatus" class="status-ok">Operational</span></p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
